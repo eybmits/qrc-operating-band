@@ -6,9 +6,7 @@
 \usepackage{booktabs}
 \usepackage{xcolor}
 \usepackage[hypertexnames=false]{hyperref}
-\usepackage{orcidlink}
 \usepackage{microtype}
-\newcommand{\orcid}[1]{\,\orcidlink{#1}}
 \setlength{\textfloatsep}{4pt plus 1pt minus 2pt}
 \setlength{\floatsep}{4pt plus 1pt minus 1pt}
 \setlength{\intextsep}{4pt plus 1pt minus 1pt}
@@ -35,15 +33,7 @@
 \begin{document}
 \raggedbottom
 \title{Where a Quantum Reservoir Works: A Transferable Operating Band}
-\author{%
-\IEEEauthorblockN{%
-Markus Baumann\IEEEauthorrefmark{1}\orcid{0009-0007-3575-1006}\thanks{Corresponding author: \href{mailto:markus.baumann@campus.lmu.de}{markus.baumann@campus.lmu.de}.},
-Itamar Fink\IEEEauthorrefmark{1}\orcid{0009-0000-2262-4445},
-Johannes Wittmann\IEEEauthorrefmark{1}\orcid{0009-0009-9240-7257},
-Claudia Linnhoff-Popien\IEEEauthorrefmark{1}\orcid{0000-0001-6284-9286},
-and Jonas Stein\IEEEauthorrefmark{1}\orcid{0000-0001-5727-9151}}
-\IEEEauthorblockA{\IEEEauthorrefmark{1}\textit{QAR-Lab, Department of Computer Science, LMU Munich, Munich, Germany}}
-}
+\author{\IEEEauthorblockN{Anonymous Authors}}
 \maketitle
 
 
@@ -172,7 +162,7 @@ Our claims are restricted to simulated instances of this architecture family, wi
 \section*{Reproducibility Appendix}
 
 \subsection{Package}
-The \href{https://github.com/eybmits/qrc-operating-band}{\textcolor{repoLinkBlue}{project repository}} contains the material needed to reproduce every number and figure in this paper: the simulator, selection and diagnostic code, fixed grids and seeds, checked-in CSV/JSON results, and figure scripts, with all stochastic components seeded for deterministic reruns.
+The anonymous reproducibility repository contains the material needed to reproduce every number and figure in this paper: the simulator, selection and diagnostic code, fixed grids and seeds, checked-in CSV/JSON results, and figure scripts, with all stochastic components seeded for deterministic reruns.
 
 \subsection{Simulator and diagnostics}
 We simulate the full density matrix exactly, without finite-shot sampling. The state starts from $\rho_0=|0\cdots0\rangle\langle0\cdots0|$, is carried between input steps without reset, and each seed uses one fixed local mixer $U_{\mathrm{mix}}=\bigotimes_i R_x(\theta_i)$ with $\theta_i\sim\mathcal{U}[0,2\pi)$, reused at every step and layer. The readout uses exact $Z_i$ and nearest-neighbor ring $Z_iZ_j$ expectations plus an unpenalized intercept. All model selection, including ridge penalties and band construction, uses validation NMSE only; holdout is evaluated only after the operating band is frozen. The strict band $B_{20,0.7}$ contains 22 coordinates in the full three-dimensional $(\beta,\lambda,\gamma)$ grid, while the mechanism-ablation maps in Fig.~\ref{fig:evidence} use the plotted $\gamma=0.12$ slice containing 9 of them. Task-free memory and information-processing diagnostics are computed on an independent random drive with chronological splits; negative held-out $R^2$ values are clipped to zero.

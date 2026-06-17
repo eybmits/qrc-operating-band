@@ -1,8 +1,6 @@
 # Reproducibility
 
-This repository provides a complete, versioned reproducibility package for the quantum-reservoir operating-band paper.
-
-Current publication tag: `v1.0.6-publication`.
+This repository provides a content-anonymized reproducibility package for the quantum-reservoir operating-band submission.
 
 ## Setup
 
@@ -20,7 +18,7 @@ From checked-in artifacts, regenerate all manuscript outputs and supporting tabl
 ./reproduce_from_artifacts.sh
 ```
 
-This command:
+This command runs:
 
 ```bash
 python scripts/analyze_phase_map_generalization.py
@@ -28,7 +26,7 @@ python scripts/make_figures_and_build_data.py
 ./paper/build.sh --update-pdf
 ```
 
-### Full rerun from scratch
+## Full rerun from scratch
 
 If you need to recompute simulation results from raw runs as well:
 
@@ -40,8 +38,8 @@ If you need to recompute simulation results from raw runs as well:
 
 - Fixed control grid and seeds are defined in `scripts/run_qrc_phase_grid.py` and `scripts/run_qrc_phase_ablation_slices.py`.
 - Seeds used in the core experiments: `42` to `61`.
-- Core hyperparameters (including ridge search) are selected on validation only; holdout is never used for band selection.
-- The repository contains checked-in CSV/JSON result files, the simulator, selection and diagnostic code, figure/table scripts, and the final manuscript assets.
+- Core hyperparameters, including ridge search, are selected on validation only; holdout is never used for band selection.
+- The repository contains checked-in CSV/JSON result files, the simulator, selection and diagnostic code, figure/table scripts, and manuscript assets.
 
 ## Included materials
 
@@ -50,10 +48,9 @@ The package includes:
 - Checked-in simulation outputs and summaries under `data/`
 - Manuscript number macros in `paper/generated/phase_map_numbers.tex`
 - Publication figure PDFs in `paper/gfx/`
-- Final manuscript in `paper/qrc_phase_diagram.pdf`
-- Flat manuscript source upload package in `dist/qrc_operating_band_source.zip`
+- Manuscript source and rebuilt manuscript PDF in `paper/`
 
-The plotting script may generate PNG previews locally; these are ignored and are not part of the tracked publication artifact.
+Generated ZIP upload bundles, PNG previews, and local LaTeX build artifacts are intentionally not tracked.
 
 ## Reproduced artifacts
 

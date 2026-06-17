@@ -25,3 +25,6 @@ paper/gfx/*.png
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+
+# Generated upload bundles
+dist/*.zip

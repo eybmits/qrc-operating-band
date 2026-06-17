@@ -40,11 +40,11 @@
 
 | File | Purpose |
 |---|---|
+| `paper/qrc_phase_diagram.tex` | Content-anonymized manuscript source. |
+| `paper/qrc_phase_diagram.pdf` | Content-anonymized compiled manuscript PDF. |
 | `paper/generated/phase_map_numbers.tex` | Generated numeric macros used by the manuscript. |
 | `paper/gfx/fig1_short_phase_maps.pdf` | Transfer phase maps. |
 | `paper/gfx/fig4_gamma_slices_compact.pdf` | Compact 2x2 damping-slice figure included in the manuscript. |
 | `paper/gfx/fig2_short_evidence.pdf` | Operating-band map and mechanism ablation rank-loss maps. |
 | `paper/gfx/fig3_memory_capacity_screens.pdf` | Memory map, memory-rank relation, and screening retention. |
 | `paper/gfx/gamma_regime_slices_only.pdf` | Supplemental wide damping-slice atlas showing the strict core and broader same-consistency band across gamma values. |
-| `paper/qrc_phase_diagram.pdf` | Reviewer-facing PDF. |
-| `dist/qrc_operating_band_source.zip` | Flat manuscript source package with `qrc_phase_diagram.tex`, `generated/`, `gfx/`, `IEEEtran.cls`, and no local build artifacts. |

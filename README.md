@@ -1,29 +1,25 @@
 # Quantum Reservoir Operating Band
 
-Clean reproducibility package for the paper **Where a Quantum Reservoir Works: A Transferable Operating Band**.
+Anonymous reproducibility package for the submission **Where a Quantum Reservoir Works: A Transferable Operating Band**.
 
-This repository contains the simulator, checked-in result artifacts, analysis scripts, figures, and manuscript sources needed to reproduce the operating-band results for a dissipative quantum reservoir.
+This repository contains the simulator, checked-in result artifacts, analysis scripts, manuscript sources, and generated figures needed to reproduce the operating-band results for a dissipative quantum reservoir.
 
 ## Reproducibility package
-
-Complete, versioned material for this submission is available at:
-
-- Repository: `https://github.com/eybmits/qrc-operating-band`
-- Artifact tag: `v1.0.6-publication`
-- DOI: pending (to be added at submission)
 
 This package contains:
 
 - Simulator and experiment code under `scripts/`
-- Fixed configuration and search setup for the published experiments
+- Fixed configuration and search setup for the reported experiments
 - Checked-in result files under `data/` (CSV/JSON)
 - Figure and table generation scripts
-- Manuscript sources and generated outputs under `paper/`
-- Clean source package under `dist/` (`qrc_operating_band_source.zip`)
+- Manuscript sources, generated number macros, and figure assets under `paper/`
+- Reproduction scripts for artifact-based rebuilds and full recomputation
 
-### Exact reproducibility contract
+The repository is content-anonymized for review. Author names, affiliations, personal contact information, ORCID identifiers, and personal repository URLs are intentionally omitted from the current files.
 
-From checked-in artifacts, regenerate the manuscript figures and LaTeX numbers:
+## Exact reproducibility contract
+
+From checked-in artifacts, regenerate the manuscript figures, LaTeX number macros, and manuscript PDF:
 
 ```bash
 ./reproduce_from_artifacts.sh
@@ -42,8 +38,6 @@ For full re-computation from raw simulations:
 ```bash
 ./reproduce.sh
 ```
-
-For anonymous review, use the same tagged material through the submission review channel.
 
 ## Operating-band result
 
@@ -75,33 +69,17 @@ pip install -r requirements.txt
 
 ```text
 .
-├── data/                      # fixed CSV/JSON outputs
-├── docs/                      # reproducibility and manifest documentation
-├── scripts/                   # simulation, analysis, and plotting code
-├── paper/                     # manuscript sources and compiled outputs
-├── dist/                      # flat source package for manuscript upload
-├── reproduce.sh               # full pipeline (includes simulation recompute)
+├── data/                       # fixed CSV/JSON outputs
+├── docs/                       # reproducibility and manifest documentation
+├── scripts/                    # simulation, analysis, and plotting code
+├── paper/                      # manuscript sources and generated outputs
+├── reproduce.sh                # full pipeline, including simulation recompute
 └── reproduce_from_artifacts.sh # fast artifact-based rebuild
 ```
 
-## Citation
+## Main files
 
-Please cite the paper if you use this repository:
-
-```bibtex
-@misc{baumann2026operatingband,
-  title  = {Where a Quantum Reservoir Works: A Transferable Operating Band},
-  author = {Baumann, Markus and Fink, Itamar and Wittmann, Johannes and Linnhoff-Popien, Claudia and Stein, Jonas},
-  year   = {2026},
-  note   = {Reproducibility package},
-  url    = {https://github.com/eybmits/qrc-operating-band}
-}
-```
-
-## Main links
-
-- Paper PDF: [paper/qrc_phase_diagram.pdf](paper/qrc_phase_diagram.pdf)
-- Manuscript source: [paper/qrc_phase_diagram.tex](paper/qrc_phase_diagram.tex)
-- Data manifest: [docs/data_manifest.md](docs/data_manifest.md)
-- Reproducibility guide: [docs/reproducibility.md](docs/reproducibility.md)
-- Source package: `dist/qrc_operating_band_source.zip`
+- Manuscript source: `paper/qrc_phase_diagram.tex`
+- Manuscript PDF: `paper/qrc_phase_diagram.pdf`
+- Data manifest: `docs/data_manifest.md`
+- Reproducibility guide: `docs/reproducibility.md`
