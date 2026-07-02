@@ -17,6 +17,8 @@ This package contains:
 
 The default manuscript build is the anonymous review version. The author-identifying version is generated from the same canonical source and stored separately under `paper/variants/`.
 
+The all-in-one upload bundle is `dist/qrc_operating_band_submission_package.zip`. It contains the manuscript TeX source, compiled anonymous and author PDFs, generated LaTeX number macros, paper figures, data artifacts, scripts, and documentation.
+
 ## Exact reproducibility contract
 
 From checked-in artifacts, regenerate the manuscript figures, LaTeX number macros, and manuscript PDF:
@@ -37,6 +39,12 @@ To rebuild both manuscript PDFs from the same canonical source:
 
 ```bash
 ./paper/build_variants.sh
+```
+
+To rebuild both PDFs and refresh the single upload zip:
+
+```bash
+./scripts/build_submission_zip.sh
 ```
 
 For full re-computation from raw simulations:
@@ -66,6 +74,7 @@ pip install -r requirements.txt
 - `paper/qrc_phase_diagram.pdf`
 - `paper/variants/qrc_phase_diagram_anonymous.pdf`
 - `paper/variants/qrc_phase_diagram_author.pdf`
+- `dist/qrc_operating_band_submission_package.zip`
 - `paper/generated/phase_map_numbers.tex`
 - `paper/gfx/fig1_short_phase_maps.pdf`
 - `paper/gfx/fig4_gamma_slices_compact.pdf`
@@ -91,5 +100,6 @@ pip install -r requirements.txt
 - Default anonymous PDF: `paper/qrc_phase_diagram.pdf`
 - Explicit anonymous PDF: `paper/variants/qrc_phase_diagram_anonymous.pdf`
 - Author PDF: `paper/variants/qrc_phase_diagram_author.pdf`
+- All-in-one upload zip: `dist/qrc_operating_band_submission_package.zip`
 - Data manifest: `docs/data_manifest.md`
 - Reproducibility guide: `docs/reproducibility.md`

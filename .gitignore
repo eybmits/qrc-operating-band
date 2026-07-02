@@ -29,3 +29,4 @@ qrc_operating_band_*_pdf_source.zip
 
 # Generated upload bundles
 dist/*.zip
+!dist/qrc_operating_band_submission_package.zip

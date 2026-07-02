@@ -26,3 +26,11 @@ Build both PDF variants from the same source with:
 ```bash
 ./build_variants.sh
 ```
+
+From the repository root, rebuild both PDFs and refresh the tracked upload bundle with:
+
+```bash
+./scripts/build_submission_zip.sh
+```
+
+That bundle is written to `dist/qrc_operating_band_submission_package.zip` and includes this TeX source, both compiled PDF variants, generated number macros, figure PDFs, repository docs, data artifacts, and reproduction scripts.
