@@ -1,9 +1,11 @@
 # Paper Sources
 
-This directory contains the content-anonymized manuscript source and generated paper assets.
+This directory contains the canonical manuscript source, generated paper assets, and both anonymous and author-identifying PDFs.
 
-- `qrc_phase_diagram.tex`: manuscript source.
-- `qrc_phase_diagram.pdf`: compiled manuscript PDF.
+- `qrc_phase_diagram.tex`: canonical manuscript source; it defaults to the anonymous version.
+- `qrc_phase_diagram.pdf`: compiled default anonymous manuscript PDF.
+- `variants/qrc_phase_diagram_anonymous.pdf`: explicit anonymous PDF built from the canonical source.
+- `variants/qrc_phase_diagram_author.pdf`: author-identifying PDF built from the same canonical source.
 - `generated/phase_map_numbers.tex`: generated numeric macros used by the manuscript.
 - `gfx/fig1_short_phase_maps.pdf`: leave-one-task-out phase maps.
 - `gfx/fig4_gamma_slices_compact.pdf`: compact 2x2 damping-slice figure included in the manuscript PDF.
@@ -18,3 +20,9 @@ Build locally with:
 ```
 
 The build output goes to `paper/build/`, which is ignored by Git. The `--update-pdf` flag refreshes the tracked manuscript PDF after a successful build.
+
+Build both PDF variants from the same source with:
+
+```bash
+./build_variants.sh
+```

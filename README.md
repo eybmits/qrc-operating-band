@@ -1,6 +1,6 @@
 # Quantum Reservoir Operating Band
 
-Anonymous reproducibility package for the submission **Where a Quantum Reservoir Works: A Transferable Operating Band**.
+Reproducibility package for the paper **Where a Quantum Reservoir Works: A Transferable Operating Band**.
 
 This repository contains the simulator, checked-in result artifacts, analysis scripts, manuscript sources, and generated figures needed to reproduce the operating-band results for a dissipative quantum reservoir.
 
@@ -12,10 +12,10 @@ This package contains:
 - Fixed configuration and search setup for the reported experiments
 - Checked-in result files under `data/` (CSV/JSON)
 - Figure and table generation scripts
-- Manuscript sources, generated number macros, and figure assets under `paper/`
+- Manuscript source, anonymous and author PDFs, generated number macros, and figure assets under `paper/`
 - Reproduction scripts for artifact-based rebuilds and full recomputation
 
-The repository is content-anonymized for review. Author names, affiliations, personal contact information, ORCID identifiers, and personal repository URLs are intentionally omitted from the current files.
+The default manuscript build is the anonymous review version. The author-identifying version is generated from the same canonical source and stored separately under `paper/variants/`.
 
 ## Exact reproducibility contract
 
@@ -31,6 +31,12 @@ This runs:
 python scripts/analyze_phase_map_generalization.py
 python scripts/make_figures_and_build_data.py
 ./paper/build.sh --update-pdf
+```
+
+To rebuild both manuscript PDFs from the same canonical source:
+
+```bash
+./paper/build_variants.sh
 ```
 
 For full re-computation from raw simulations:
@@ -58,6 +64,8 @@ pip install -r requirements.txt
 ## Expected outputs
 
 - `paper/qrc_phase_diagram.pdf`
+- `paper/variants/qrc_phase_diagram_anonymous.pdf`
+- `paper/variants/qrc_phase_diagram_author.pdf`
 - `paper/generated/phase_map_numbers.tex`
 - `paper/gfx/fig1_short_phase_maps.pdf`
 - `paper/gfx/fig4_gamma_slices_compact.pdf`
@@ -80,6 +88,8 @@ pip install -r requirements.txt
 ## Main files
 
 - Manuscript source: `paper/qrc_phase_diagram.tex`
-- Manuscript PDF: `paper/qrc_phase_diagram.pdf`
+- Default anonymous PDF: `paper/qrc_phase_diagram.pdf`
+- Explicit anonymous PDF: `paper/variants/qrc_phase_diagram_anonymous.pdf`
+- Author PDF: `paper/variants/qrc_phase_diagram_author.pdf`
 - Data manifest: `docs/data_manifest.md`
 - Reproducibility guide: `docs/reproducibility.md`

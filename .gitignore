@@ -21,6 +21,7 @@ paper/gfx/*.png
 
 # optional local bundles and generated zips
 *qrc_phase_diagram_repro.zip
+qrc_operating_band_*_pdf_source.zip
 
 .pytest_cache/
 .mypy_cache/
