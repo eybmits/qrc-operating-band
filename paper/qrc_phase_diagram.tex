@@ -215,7 +215,11 @@ We study simulated four-qubit realizations of a canonical dissipative QRC archit
 
 \section*{Reproducibility Appendix}
 
-The \QRCprojectlink{} provides the simulator, fixed grids, seeds, results, and scripts needed to reproduce every result. We use exact density-matrix simulation without finite-shot sampling, carry the state between inputs without reset, and reuse one seed-fixed local mixer throughout. The readout comprises exact $Z_i$ and nearest-neighbor ring $Z_iZ_j$ expectations plus an intercept. Selection uses validation NMSE; holdout is evaluated only after freezing the band. CIs use a percentile bootstrap (50,000 resamples; seed 20260523). The strict band $B_{20,0.7}$ contains 22 $(\beta,\lambda,\gamma)$ coordinates, nine on the $\gamma=0.12$ slice in Fig.~\ref{fig:evidence}. Task-free diagnostics use an independent random drive with chronological splits; negative held-out $R^2$ values are clipped to zero.
+\subsection{Code and data}
+The \QRCprojectlink{} provides the simulator, fixed grids, seeds, checked-in results, and figure scripts needed to reproduce every result.
+
+\subsection{Implementation details}
+We use exact density-matrix simulation without finite-shot sampling. Model selection uses validation NMSE only, and holdout is evaluated after band freezing. Confidence intervals use a percentile bootstrap with 50,000 resamples (seed 20260523). The strict band $B_{20,0.7}$ contains 22 grid coordinates, including nine on the $\gamma=0.12$ slice shown in Fig.~\ref{fig:evidence}.
 
 \section*{Acknowledgment}
 This work was supported by the LMU Sustainability Fund (EfOiE), the German Federal Ministry of Research, Technology and Space (BMFTR) through QuCUN, QuaRDS, and CAQAO, the Munich Quantum Valley consortia K5 and K7, and the Bavarian Ministry of Economic Affairs project 6GQT.
