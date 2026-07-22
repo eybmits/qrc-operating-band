@@ -206,7 +206,7 @@ Task & Band NMSE & Medoid NMSE & Band rank\\
 \end{tabular}
 \end{table}
 \section{Discussion}
-For this reservoir family, where the reservoir works is set by a transferable operating regime, not by task-specific tuning: the same region holds across all four benchmark tasks, and it persists when any one task or seed is withheld. The regime is picked out by memory; raw feature diversity, an expressivity proxy, does not predict it. What matters is the balance classical reservoir theory identified, with drive, coupling, and dissipation holding memory and nonlinearity in tension \cite{tanaka2019,dambre2012}. Removing any one mechanism collapses the regime.
+For this reservoir family, useful dynamics form a transferable regime rather than requiring task-specific tuning. The regime persists when any task or seed is withheld. Memory, unlike raw feature diversity, identifies it. Reservoir theory explains why: drive, coupling, and dissipation must balance memory and nonlinearity \cite{tanaka2019,dambre2012}; each ablation collapses it.
 
 We study simulated four-qubit realizations of a canonical dissipative QRC architecture that serves as a representative testbed; scaling with system size, finite-shot effects, calibration drift, device noise, and readout cost remain open \cite{mujal2023}. Because the readout features are low-weight Pauli expectations, shot noise enters at the standard $1/\sqrt{S}$ rate; testing the band on larger hardware is the natural next step. At this size the reservoir is also classically simulable, so the contribution is methodological, not a claim of quantum advantage. Within these limits, the practical consequence is concrete. The default workflow in QRC, a fresh hyperparameter search for every task, treats each problem as if the reservoir had to be rediscovered from scratch; our results say it does not: one memory measurement, taken once and without any task data, identifies the settings that then serve every task we tested. For the architectures and tasks tested, reservoir usefulness depends strongly on where it is operated, and promising settings can be screened from memory alone.
 
@@ -223,9 +223,9 @@ This work was supported by the LMU Sustainability Fund (EfOiE), the German Feder
 {\footnotesize
 \begin{thebibliography}{99}
 \ifQRCauthorversion
-\setlength{\itemsep}{-0.4ex}
+\setlength{\itemsep}{-0.1ex}
 \else
-\setlength{\itemsep}{-0.4ex}
+\setlength{\itemsep}{-0.1ex}
 \fi
 \setlength{\parskip}{0pt}
 \bibitem{maass2002} W. Maass, T. Natschl\"{a}ger, and H. Markram, \QRCdoi{https://doi.org/10.1162/089976602760407955}{``Real-time computing without stable states: A new framework for neural computation based on perturbations,''} \emph{Neural Computation}, vol. 14, no. 11, pp. 2531--2560, 2002.
