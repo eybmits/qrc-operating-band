@@ -25,6 +25,9 @@ plt.rcParams.update(
         "font.family": "serif",
         "font.serif": ["DejaVu Serif"],
         "mathtext.fontset": "dejavuserif",
+        # IEEE PDF eXpress rejects Matplotlib's default Type 3 PDF fonts.
+        "pdf.fonttype": 42,
+        "ps.fonttype": 42,
         "axes.linewidth": 0.8,
         "xtick.major.width": 0.8,
         "ytick.major.width": 0.8,
@@ -66,10 +69,10 @@ TASK_LABELS = {
 
 def savefig_dual(fig, stem, aliases=()):
     fig.savefig(GFX / f"{stem}.png", dpi=360, bbox_inches="tight")
-    fig.savefig(GFX / f"{stem}.pdf", bbox_inches="tight")
+    fig.savefig(GFX / f"{stem}.pdf", dpi=360, bbox_inches="tight")
     for alias in aliases:
         fig.savefig(GFX / f"{alias}.png", dpi=360, bbox_inches="tight")
-        fig.savefig(GFX / f"{alias}.pdf", bbox_inches="tight")
+        fig.savefig(GFX / f"{alias}.pdf", dpi=360, bbox_inches="tight")
     plt.close(fig)
 
 

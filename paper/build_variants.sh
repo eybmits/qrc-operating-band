@@ -6,16 +6,15 @@ mkdir -p build variants
 
 build_variant() {
   local variant="$1"
-  local jobname="qrc_phase_diagram_${variant}"
+  local jobname="qrc_operating_band_${variant}"
+  local definitions
 
   case "$variant" in
-    anonymous)
-      pdflatex -interaction=nonstopmode -halt-on-error -jobname "$jobname" -output-directory build qrc_phase_diagram.tex
-      pdflatex -interaction=nonstopmode -halt-on-error -jobname "$jobname" -output-directory build qrc_phase_diagram.tex
+    arxiv)
+      definitions='\def\QRCAuthorVersion{1}\def\QRCArxivVersion{1}'
       ;;
-    author)
-      pdflatex -interaction=nonstopmode -halt-on-error -jobname "$jobname" -output-directory build '\def\QRCAuthorVersion{1}\input{qrc_phase_diagram.tex}'
-      pdflatex -interaction=nonstopmode -halt-on-error -jobname "$jobname" -output-directory build '\def\QRCAuthorVersion{1}\input{qrc_phase_diagram.tex}'
+    ieee)
+      definitions='\def\QRCAuthorVersion{1}'
       ;;
     *)
       echo "unknown variant: $variant" >&2
@@ -23,13 +22,15 @@ build_variant() {
       ;;
   esac
 
+  local tex_input="${definitions}\\input{qrc_phase_diagram.tex}"
+  pdflatex -interaction=nonstopmode -halt-on-error -jobname "$jobname" -output-directory build "$tex_input"
+  pdflatex -interaction=nonstopmode -halt-on-error -jobname "$jobname" -output-directory build "$tex_input"
   cp "build/${jobname}.pdf" "variants/${jobname}.pdf"
 }
 
 if [[ "${1:-all}" == "all" ]]; then
-  build_variant anonymous
-  build_variant author
-  cp variants/qrc_phase_diagram_anonymous.pdf qrc_phase_diagram.pdf
+  build_variant arxiv
+  build_variant ieee
 else
   build_variant "$1"
 fi

@@ -1,11 +1,12 @@
 # Paper Sources
 
-This directory contains the canonical manuscript source, generated paper assets, and both anonymous and author-identifying PDFs.
+This directory contains the canonical manuscript source, generated paper assets, and the camera-ready build variants.
 
-- `qrc_phase_diagram.tex`: canonical manuscript source; it defaults to the anonymous version.
-- `qrc_phase_diagram.pdf`: compiled default anonymous manuscript PDF.
-- `variants/qrc_phase_diagram_anonymous.pdf`: explicit anonymous PDF built from the canonical source.
-- `variants/qrc_phase_diagram_author.pdf`: author-identifying PDF built from the same canonical source.
+- `qrc_phase_diagram.tex`: canonical manuscript source; direct compilation produces the author/IEEE version without active links.
+- `qrc_operating_band_arxiv.tex`: clean arXiv entry point with colored links and the IEEE accepted-manuscript notice.
+- `qrc_operating_band_ieee.tex`: clean IEEE/CPS entry point without `hyperref` or active links.
+- `variants/qrc_operating_band_arxiv.pdf`: rendered arXiv version.
+- `variants/qrc_operating_band_ieee.pdf`: rendered IEEE/CPS version.
 - `generated/phase_map_numbers.tex`: generated numeric macros used by the manuscript.
 - `gfx/fig1_short_phase_maps.pdf`: leave-one-task-out phase maps.
 - `gfx/fig4_gamma_slices_compact.pdf`: compact 2x2 damping-slice figure included in the manuscript PDF.
@@ -21,7 +22,7 @@ Build locally with:
 
 The build output goes to `paper/build/`, which is ignored by Git. The `--update-pdf` flag refreshes the tracked manuscript PDF after a successful build.
 
-Build both PDF variants from the same source with:
+Build both publication-ready variants from the same source with:
 
 ```bash
 ./build_variants.sh
@@ -33,4 +34,4 @@ From the repository root, rebuild both PDFs and refresh the tracked upload bundl
 ./scripts/build_submission_zip.sh
 ```
 
-That bundle is written to `dist/qrc_operating_band_submission_package.zip` and includes this TeX source, both compiled PDF variants, generated number macros, figure PDFs, repository docs, data artifacts, and reproduction scripts.
+This creates `dist/qrc_operating_band_arxiv_upload.zip` and `dist/qrc_operating_band_ieee_upload.zip`. Each ZIP is deliberately minimal and contains only the files needed to compile that version.

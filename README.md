@@ -2,6 +2,8 @@
 
 Reproducibility package for the paper **Where a Quantum Reservoir Works: A Transferable Operating Band**.
 
+Project repository: [github.com/eybmits/qrc-operating-band](https://github.com/eybmits/qrc-operating-band)
+
 This repository contains the simulator, checked-in result artifacts, analysis scripts, manuscript sources, and generated figures needed to reproduce the operating-band results for a dissipative quantum reservoir.
 
 ## Reproducibility package
@@ -12,12 +14,12 @@ This package contains:
 - Fixed configuration and search setup for the reported experiments
 - Checked-in result files under `data/` (CSV/JSON)
 - Figure and table generation scripts
-- Manuscript source, anonymous and author PDFs, generated number macros, and figure assets under `paper/`
+- Manuscript source, arXiv and IEEE camera-ready PDFs, generated number macros, and figure assets under `paper/`
 - Reproduction scripts for artifact-based rebuilds and full recomputation
 
-The default manuscript build is the anonymous review version. The author-identifying version is generated from the same canonical source and stored separately under `paper/variants/`.
+The publication-ready variants are generated from one canonical source. The arXiv build retains colored links and the IEEE accepted-manuscript notice; the IEEE/CPS build intentionally loads no `hyperref` package and contains no active links.
 
-The all-in-one upload bundle is `dist/qrc_operating_band_submission_package.zip`. It contains the manuscript TeX source, compiled anonymous and author PDFs, generated LaTeX number macros, paper figures, data artifacts, scripts, and documentation.
+Two minimal source bundles are generated for upload: `dist/qrc_operating_band_arxiv_upload.zip` and `dist/qrc_operating_band_ieee_upload.zip`. Each contains only its entry point, the canonical TeX source, `IEEEtran.cls`, generated number macros, and the four included figure PDFs.
 
 ## Exact reproducibility contract
 
@@ -35,13 +37,13 @@ python scripts/make_figures_and_build_data.py
 ./paper/build.sh --update-pdf
 ```
 
-To rebuild both manuscript PDFs from the same canonical source:
+To rebuild both clean manuscript PDFs from the same canonical source:
 
 ```bash
 ./paper/build_variants.sh
 ```
 
-To rebuild both PDFs and refresh the single upload zip:
+To rebuild both PDFs and refresh both minimal upload ZIPs:
 
 ```bash
 ./scripts/build_submission_zip.sh
@@ -72,9 +74,10 @@ pip install -r requirements.txt
 ## Expected outputs
 
 - `paper/qrc_phase_diagram.pdf`
-- `paper/variants/qrc_phase_diagram_anonymous.pdf`
-- `paper/variants/qrc_phase_diagram_author.pdf`
-- `dist/qrc_operating_band_submission_package.zip`
+- `paper/variants/qrc_operating_band_arxiv.pdf`
+- `paper/variants/qrc_operating_band_ieee.pdf`
+- `dist/qrc_operating_band_arxiv_upload.zip`
+- `dist/qrc_operating_band_ieee_upload.zip`
 - `paper/generated/phase_map_numbers.tex`
 - `paper/gfx/fig1_short_phase_maps.pdf`
 - `paper/gfx/fig4_gamma_slices_compact.pdf`
@@ -97,9 +100,9 @@ pip install -r requirements.txt
 ## Main files
 
 - Manuscript source: `paper/qrc_phase_diagram.tex`
-- Default anonymous PDF: `paper/qrc_phase_diagram.pdf`
-- Explicit anonymous PDF: `paper/variants/qrc_phase_diagram_anonymous.pdf`
-- Author PDF: `paper/variants/qrc_phase_diagram_author.pdf`
-- All-in-one upload zip: `dist/qrc_operating_band_submission_package.zip`
+- arXiv PDF: `paper/variants/qrc_operating_band_arxiv.pdf`
+- IEEE/CPS PDF: `paper/variants/qrc_operating_band_ieee.pdf`
+- arXiv source upload: `dist/qrc_operating_band_arxiv_upload.zip`
+- IEEE source upload: `dist/qrc_operating_band_ieee_upload.zip`
 - Data manifest: `docs/data_manifest.md`
 - Reproducibility guide: `docs/reproducibility.md`
