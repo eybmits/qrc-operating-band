@@ -1,29 +1,61 @@
-# Quantum Reservoir Operating Band
+# Where a Quantum Reservoir Works: A Transferable Operating Band
 
-Reproducibility package for the paper **Where a Quantum Reservoir Works: A Transferable Operating Band**.
+[![arXiv](https://img.shields.io/badge/arXiv-2606.13284-b31b1b.svg)](https://arxiv.org/abs/2606.13284)
+[![Accepted at QCE26](https://img.shields.io/badge/QCE26-accepted-00629B.svg)](https://qce.quantum.ieee.org/2026/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Project repository: [github.com/eybmits/qrc-operating-band](https://github.com/eybmits/qrc-operating-band)
+Complete reproducibility package for the paper *Where a Quantum Reservoir
+Works: A Transferable Operating Band*.
 
-This repository contains the simulator, checked-in result artifacts, analysis scripts, manuscript sources, and generated figures needed to reproduce the operating-band results for a dissipative quantum reservoir.
+**Publication status:** accepted as a workshop paper at the
+**4th International Workshop on Quantum Machine Learning: From Research to
+Practice**, part of the 2026 IEEE International Conference on Quantum Computing
+and Engineering (QCE26 / IEEE Quantum Week 2026).
 
-## Reproducibility package
+| Resource | Link |
+|---|---|
+| Paper | [arXiv:2606.13284](https://arxiv.org/abs/2606.13284) |
+| Venue | [IEEE Quantum Week 2026 (QCE26)](https://qce.quantum.ieee.org/2026/) |
+| Reproducibility guide | [`docs/reproducibility.md`](docs/reproducibility.md) |
+| Data manifest | [`docs/data_manifest.md`](docs/data_manifest.md) |
+| Citation metadata | [`CITATION.cff`](CITATION.cff) |
 
-This package contains:
+## Result
 
-- Simulator and experiment code under `scripts/`
-- Fixed configuration and search setup for the reported experiments
-- Checked-in result files under `data/` (CSV/JSON)
-- Figure and table generation scripts
-- Manuscript source, arXiv and IEEE camera-ready PDFs, generated number macros, and figure assets under `paper/`
-- Reproduction scripts for artifact-based rebuilds and full recomputation
+The package maps a validation-defined operating band in a dissipative quantum
+reservoir over input drive `beta`, coupling `lambda`, and amplitude damping
+`gamma`. The band is:
 
-The publication-ready variants are generated from one canonical source. The arXiv build retains colored links and the IEEE accepted-manuscript notice; the IEEE/CPS build intentionally loads no `hyperref` package and contains no active links.
+- selected using validation ranks rather than holdout performance;
+- tested across tasks, reservoir initializations, and chronological holdout
+  data;
+- stress-tested with leave-one-task and leave-one-seed analyses;
+- compared with mechanism ablations and task-free memory diagnostics.
 
-Two minimal source bundles are generated for upload: `dist/qrc_operating_band_arxiv_upload.zip` and `dist/qrc_operating_band_ieee_upload.zip`. Each contains only its entry point, the canonical TeX source, `IEEEtran.cls`, generated number macros, and the four included figure PDFs.
+The practical result is a reusable operating regime that can be screened with a
+memory diagnostic before target-task tuning.
 
-## Exact reproducibility contract
+## Package contents
 
-From checked-in artifacts, regenerate the manuscript figures, LaTeX number macros, and manuscript PDF:
+- `scripts/` — simulation, analysis, and figure-generation code.
+- `data/` — checked CSV and JSON result artifacts.
+- `docs/` — the reproducibility guide and data manifest.
+- `paper/` — canonical manuscript source, generated number macros, and figure
+  assets.
+- `reproduce_from_artifacts.sh` — fast rebuild from checked result artifacts.
+- `reproduce.sh` — full simulation recomputation.
+
+## Fast reproduction from checked artifacts
+
+Create an environment and install the pinned Python dependencies:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
+
+Regenerate the analysis, figures, number macros, and manuscript PDF:
 
 ```bash
 ./reproduce_from_artifacts.sh
@@ -37,72 +69,57 @@ python scripts/make_figures_and_build_data.py
 ./paper/build.sh --update-pdf
 ```
 
-To rebuild both clean manuscript PDFs from the same canonical source:
+A local LaTeX installation with `pdflatex` is required for the manuscript
+build.
+
+## Publication builds
+
+The arXiv and IEEE/CPS PDFs are generated from the same canonical manuscript
+source:
 
 ```bash
 ./paper/build_variants.sh
 ```
 
-To rebuild both PDFs and refresh both minimal upload ZIPs:
+To rebuild both PDFs and create minimal upload archives:
 
 ```bash
 ./scripts/build_submission_zip.sh
 ```
 
-For full re-computation from raw simulations:
-
-```bash
-./reproduce.sh
-```
-
-## Operating-band result
-
-The main artifact is a validation-defined operating band in the reservoir control space over input drive `beta`, coupling `lambda`, and amplitude damping `gamma`. The band is selected from validation ranks, audited on holdout data, stress-tested with leave-one-task and leave-one-seed transfer, and compared against mechanism ablations and memory diagnostics.
-
-## Quick Start
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-```bash
-./reproduce_from_artifacts.sh
-```
-
-## Expected outputs
+Generated publication files are written to:
 
 - `paper/qrc_phase_diagram.pdf`
 - `paper/variants/qrc_operating_band_arxiv.pdf`
 - `paper/variants/qrc_operating_band_ieee.pdf`
 - `dist/qrc_operating_band_arxiv_upload.zip`
 - `dist/qrc_operating_band_ieee_upload.zip`
-- `paper/generated/phase_map_numbers.tex`
-- `paper/gfx/fig1_short_phase_maps.pdf`
-- `paper/gfx/fig4_gamma_slices_compact.pdf`
-- `paper/gfx/fig2_short_evidence.pdf`
-- `paper/gfx/fig3_memory_capacity_screens.pdf`
-- `paper/gfx/gamma_regime_slices_only.pdf`
 
-## Repository layout
+These generated paths are intentionally absent from a fresh clone until the
+corresponding build command is run.
 
-```text
-.
-├── data/                       # fixed CSV/JSON outputs
-├── docs/                       # reproducibility and manifest documentation
-├── scripts/                    # simulation, analysis, and plotting code
-├── paper/                      # manuscript sources and generated outputs
-├── reproduce.sh                # full pipeline, including simulation recompute
-└── reproduce_from_artifacts.sh # fast artifact-based rebuild
+## Full recomputation
+
+To rerun the simulation pipeline rather than rebuilding from the checked
+artifacts:
+
+```bash
+./reproduce.sh
 ```
 
-## Main files
+The artifact-based route is the recommended reviewer path; the full route is
+substantially more expensive.
 
-- Manuscript source: `paper/qrc_phase_diagram.tex`
-- arXiv PDF: `paper/variants/qrc_operating_band_arxiv.pdf`
-- IEEE/CPS PDF: `paper/variants/qrc_operating_band_ieee.pdf`
-- arXiv source upload: `dist/qrc_operating_band_arxiv_upload.zip`
-- IEEE source upload: `dist/qrc_operating_band_ieee_upload.zip`
-- Data manifest: `docs/data_manifest.md`
-- Reproducibility guide: `docs/reproducibility.md`
+## Scope
+
+The evidence is for simulated instances of the documented dissipative
+gate-model reservoir family. The package supports the paper's operating-band,
+transfer, ablation, and memory-screening claims. It does not make a hardware
+quantum-advantage claim, and it does not cover finite-shot noise, calibration
+drift, or measurement back-action.
+
+## Citation and license
+
+Please cite the paper and repository using [`CITATION.cff`](CITATION.cff).
+The software is released under the [MIT License](LICENSE). The manuscript and
+publication PDFs remain subject to the applicable IEEE publication terms.
